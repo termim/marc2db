@@ -1,0 +1,6 @@
+create virtual table subf using fts3 (field_id INTEGER REFERENCES marc_fields (id),code CHAR NOT NULL,data TEXT NOT NULL);
+
+insert into subf (docid,field_id,code,data) select id,field_id,code,data from marc_subfields;
+
+select * from subf where subf match 'толстой';
+
